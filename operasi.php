@@ -1,5 +1,16 @@
 <?php
 class master{
+
+    protected $id;
+    private $cont=0;
+    private  $cols;
+    private  $tabel;
+
+protected function __construct($arr,$tabel){
+    $this->cols=$arr;
+    $this->tabel=$tabel;
+}
+
 public function get(){
     include "koneksi.php";
     $query="select * from ".$this->tabel;
@@ -12,6 +23,7 @@ public function get(){
             $this->$col[$i]=$row[$this->cols[$a]];
         }
         $i++;
+        $this->cont++;
     }
 }
 
@@ -20,7 +32,7 @@ private function add(){
 
 }
 public function show(){
-    $coun=count($this->id);
+    $coun=$this->cont;
     echo "<table border=1 style='text-align:center;'>";
     echo "<tr>";
     for($co=0;$co<count($this->cols);$co++){
@@ -39,7 +51,7 @@ public function show(){
     echo "</table>";
 }
 public function edit($indeks){
-    $coun=count($this->id);
+    $coun=$this->cont;
     echo "<hr/><table>";
     
     for($co=0;$co<count($this->cols);$co++){
