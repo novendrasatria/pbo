@@ -1,5 +1,4 @@
 <?php
-include "operasi.php";
     class barang extends master{
         public $idbarang=[];
         public $nama=[];
@@ -8,20 +7,13 @@ include "operasi.php";
         public $stokrusak=[];
         public $hbeli=[];
         public $hjual=[];
+        private $tabel="barang";
         private $arr=array("idbarang","nama","satuan","stoktersedia","stokrusak","hbeli","hjual");
 
         public function __construct(){
-            parent::__construct($this->arr,"barang");
+            parent::__construct($this->arr,$this->tabel);
         }
 
         
-    }
-
-    $barang=new barang();
-    $barang->get();
-    $barang->show();
-
-    if(isset($_GET['indeks'])){
-        $barang->edit($_GET['indeks']);
     }
 ?>

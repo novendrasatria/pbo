@@ -31,8 +31,37 @@ public function get(){
 private function add(){
 
 }
-public function show(){
+
+public function btn($main,$sub){
+    $menu1=array("tampil","edit","hapus","tambah");
+    $button=array("Tambah","Simpan","Batal");
+    echo "<table>";
+    for($i=0;$i<count($button);$i++){
+        $statbt=0;
+        if($i==0){
+            $statbt=3;
+            echo "<tr>";
+            if($sub==1||$sub==3){
+                continue;
+            }
+        }
+        elseif($i==1){
+            $statbt=31;
+        }else{
+            $statbt=32;
+        }
+        echo"<td><a href='index.php?link=".$main."&sub=".$statbt."'>$button[$i]</a></td>";
+        if($sub==0&&$i==0){
+            echo "</tr>";
+            break;
+        }
+    }
+    echo "</tr></table><hr/>";
+}
+
+public function show($main,$sub){
     $coun=$this->cont;
+    $this->btn($main,$sub);
     echo "<table border=1 style='text-align:center;'>";
     echo "<tr>";
     for($co=0;$co<count($this->cols);$co++){
@@ -45,10 +74,17 @@ public function show(){
             $value=$this->cols[$co];
             echo "<td>".$this->$value[$i]."</td>";
         }
-        echo "<td><a href='".$this->tabel.".php?indeks=".$i."'>Pilih</a></td>";
+        echo "<td><a href='index.php?link=".$main."&sub=1&indeks=".$i."'>Pilih</a>
+            <a href='index.php?link=".$main."&sub=2&indeks=".$i."'>Hapus</a></td>";
         echo "</tr>";
     }
     echo "</table>";
+    if($sub==1){
+        $this->edit($_GET['indeks']);
+    }
+    elseif($sub==3){
+        $this->edit("");
+    }
 }
 public function edit($indeks){
     $coun=$this->cont;
@@ -57,7 +93,11 @@ public function edit($indeks){
     for($co=0;$co<count($this->cols);$co++){
         echo "<tr>";
         $value=$this->cols[$co];
-        echo "<td>".$this->cols[$co]."</td><td>:</td><td><input type='text' value='".$this->$value[$indeks]."'/></td>";
+        if($indeks==""){
+            echo "<td>".$this->cols[$co]."</td><td>:</td><td><input type='text' value=''/></td>";
+        }else{
+            echo "<td>".$this->cols[$co]."</td><td>:</td><td><input type='text' value='".$this->$value[$indeks]."'/></td>";
+        }
         echo "</tr>";
     }
     echo "</table>";
