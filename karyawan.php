@@ -12,12 +12,4 @@
         }
        
     }
-
-    $karyawan=new karyawan();
-    $karyawan->get();
-    $karyawan->show();
-
-    if(isset($_GET['indeks'])){
-        $karyawan->edit($_GET['indeks']);
-    }
 ?>
