@@ -13,12 +13,4 @@
         }
         
     }
-
-    $konsiasi=new konsiasi();
-    $konsiasi->get();
-    $konsiasi->show();
-
-    if(isset($_GET['indeks'])){
-        $konsiasi->edit($_GET['indeks']);
-    }
 ?>
