@@ -13,12 +13,4 @@
         }
         
     }
-
-    $rincpenjualan=new rincpenjualan();
-    $rincpenjualan->get();
-    $rincpenjualan->show();
-
-    if(isset($_GET['indeks'])){
-        $rincpenjualan->edit($_GET['indeks']);
-    }
 ?>
