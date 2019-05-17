@@ -11,12 +11,4 @@
             parent::__construct($this->arr,$this->tabel);
         }
     }
-
-    $pembelian=new pembelian();
-    $pembelian->get();
-    $pembelian->show();
-
-    if(isset($_GET['indeks'])){
-        $pembelian->edit($_GET['indeks']);
-    }
 ?>
