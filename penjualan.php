@@ -11,12 +11,5 @@
             parent::__construct($this->arr,$this->tabel);
         }  
     }
-    $penjualan=new penjualan();
-    $penjualan->get();
-    $penjualan->show();
-
-    if(isset($_GET['indeks'])){
-        $penjualan->edit($_GET['indeks']);
-    }
     
 ?>
