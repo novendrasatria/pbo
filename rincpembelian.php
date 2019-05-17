@@ -13,12 +13,4 @@
         }
         
     }
-
-    $rincpembelian=new rincpembelian();
-    $rincpembelian->get();
-    $rincpembelian->show();
-
-    if(isset($_GET['indeks'])){
-        $rincpembelian->edit($_GET['indeks']);
-    }
 ?>
